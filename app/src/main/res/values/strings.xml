@@ -1,6 +1,17 @@
 <resources>
     <string name="app_name">MelodyApp</string>
-    <string name="start_capture">Start Capture</string>
-    <string name="stop_capture">Stop Capture</string>
-    <string name="play_video">Play</string>
+    <string name="app_title">MelodyApp</string>
+    <string name="action_draw">Dibujar</string>
+    <string name="action_sound">Reproductor</string>
+    <string name="action_video_1">Video - 1</string>
+    <string name="action_video_2">Video - 2</string>
+    <string name="action_start_capture">Empezar a Grabar</string>
+    <string name="action_stop_capture">Dejar de Grabar</string>
+    <string name="action_play_video">Reproducir</string>
+    <string name="video_saved_prompt">Video guardado. Pulsa play para ver.</string>
+    <string name="permissions_not_granted">Permisos no concedidos por el usuario.</string>
+    <string name="start_capture">Empezar a Grabar</string>
+    <string name="stop_capture">Dejar de Grabar</string>
+    <string name="play_video">Reproducir</string>
+    <string name="Video">video2</string>
 </resources>

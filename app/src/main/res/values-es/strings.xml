@@ -1,6 +1,0 @@
-<resources>
-    <string name="app_name">MelodyApp</string>
-    <string name="start_capture">Empezar a Grabar</string>
-    <string name="stop_capture">Dejar de Grabar</string>
-    <string name="play_video">Reproducir</string>
-</resources>

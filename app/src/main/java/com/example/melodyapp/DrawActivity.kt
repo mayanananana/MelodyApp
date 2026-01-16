@@ -9,17 +9,16 @@ class DrawActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(DrawCanvas(this))
+        setContentView(R.layout.activity_draw)
 
-       /* val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+    }
 
-        toolbar.setNavigationOnClickListener {
-            finish()
-        }*/
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }
 

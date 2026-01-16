@@ -16,8 +16,6 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:title="Draw"
             app:navigationIcon="?attr/homeAsUpIndicator" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -30,6 +28,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
+        <com.example.melodyapp.DrawCanvas
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

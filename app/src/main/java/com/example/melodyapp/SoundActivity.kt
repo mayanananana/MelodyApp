@@ -48,7 +48,7 @@ class SoundActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
         toolbar.setNavigationOnClickListener {
             finish()
@@ -60,7 +60,6 @@ class SoundActivity : AppCompatActivity() {
         btnPrev = findViewById(R.id.prevSong)
         seekBarProgreso = findViewById(R.id.seekBar)
         seekBarVolumen = findViewById(R.id.volumeSeekBar)
-        botonSeekBarVolumen = findViewById(R.id.volBtn)
 
         // Crear MediaPlayer inicial
         crearMediaPlayer()
@@ -68,6 +67,9 @@ class SoundActivity : AppCompatActivity() {
         // Configurar SeekBars
         configurarSeekBarVolumen()
         configurarSeekBarProgreso()
+
+
+
 
         // Botones
         btnPlayPause.setOnClickListener { playPause() }
@@ -143,25 +145,30 @@ class SoundActivity : AppCompatActivity() {
         }
         crearMediaPlayer()
         mediaPlayer.start()
+        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
     }
     private fun siguienteCancion() {
         indiceActual=(indiceActual+1)%playlist.size
         crearMediaPlayer()
         mediaPlayer.start()
+        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
     }
 
     private fun playPause() {
-    if(mediaPlayer.isPlaying){
-        mediaPlayer.pause()
-        btnPlayPause.setImageResource(R.drawable.pause_2_test) // importar un boton para el play y otro para el pause
-    }else{
-        mediaPlayer.start()
-        btnPlayPause.setImageResource(R.drawable.pause_btn)
-    }
+        if(mediaPlayer.isPlaying){
+            mediaPlayer.pause()
+            // Si pausas, muestra el ícono de PLAY
+            btnPlayPause.setImageResource(R.drawable.play_btn)
+        }else{
+            mediaPlayer.start()
+            // Si reproduces, muestra el ícono de PAUSA
+            btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        }
     }
 
     override fun onDestroy(){
         super.onDestroy()
+        handler.removeCallbacksAndMessages(null) // Detener el actualizador del seekbar
         if(::mediaPlayer.isInitialized){
             mediaPlayer.release()
         }

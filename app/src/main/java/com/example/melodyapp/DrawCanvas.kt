@@ -3,10 +3,15 @@ package com.example.melodyapp
 import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.*
+import android.util.AttributeSet
 import android.view.View
 import android.view.animation.LinearInterpolator
 
-class DrawCanvas(context: Context) : View(context) {
+class DrawCanvas(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : View(context, attrs, defStyleAttr) {
+
+    constructor(context: Context, attrs: AttributeSet?) : this(context, attrs, 0)
+    constructor(context: Context) : this(context, null)
+
 
     private var lensScale = 1f
     private val animator: ValueAnimator = ValueAnimator.ofFloat(1f, 1.2f, 1f).apply {
