@@ -23,7 +23,6 @@ class SoundActivity : AppCompatActivity() {
     private lateinit var seekBarProgreso: SeekBar
     private lateinit var seekBarVolumen: SeekBar
 
-    private lateinit var botonSeekBarVolumen: ImageButton
 
 
     // Playlist
@@ -68,8 +67,10 @@ class SoundActivity : AppCompatActivity() {
         configurarSeekBarVolumen()
         configurarSeekBarProgreso()
 
-
-
+        // Iniciar música automáticamente y la actualización de la UI
+        mediaPlayer.start()
+        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        actualizarSeekBarProgreso()
 
         // Botones
         btnPlayPause.setOnClickListener { playPause() }
@@ -118,8 +119,6 @@ class SoundActivity : AppCompatActivity() {
         mediaPlayer = MediaPlayer.create(this, playlist[indiceActual])
         seekBarProgreso.max= mediaPlayer.duration
 
-        actualizarSeekBarProgreso()
-
         mediaPlayer.setOnCompletionListener {
             siguienteCancion()
 
@@ -131,8 +130,9 @@ class SoundActivity : AppCompatActivity() {
             override fun run() {
                 if (::mediaPlayer.isInitialized && mediaPlayer.isPlaying) {
                     seekBarProgreso.progress = mediaPlayer.currentPosition
+                    // Solo se vuelve a llamar si la música está sonando
+                    handler.postDelayed(this, 500)
                 }
-                handler.postDelayed(this, 500)
             }
         }, 0)
     }
@@ -146,22 +146,24 @@ class SoundActivity : AppCompatActivity() {
         crearMediaPlayer()
         mediaPlayer.start()
         btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        actualizarSeekBarProgreso()
     }
     private fun siguienteCancion() {
         indiceActual=(indiceActual+1)%playlist.size
         crearMediaPlayer()
         mediaPlayer.start()
         btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        actualizarSeekBarProgreso()
     }
 
     private fun playPause() {
-        if(mediaPlayer.isPlaying){
+        if (mediaPlayer.isPlaying) {
             mediaPlayer.pause()
-            // Si pausas, muestra el ícono de PLAY
+            handler.removeCallbacksAndMessages(null) // Detener el actualizador
             btnPlayPause.setImageResource(R.drawable.play_btn)
-        }else{
+        } else {
             mediaPlayer.start()
-            // Si reproduces, muestra el ícono de PAUSA
+            actualizarSeekBarProgreso() // Reiniciar el actualizador
             btnPlayPause.setImageResource(R.drawable.pause_btn_b)
         }
     }
