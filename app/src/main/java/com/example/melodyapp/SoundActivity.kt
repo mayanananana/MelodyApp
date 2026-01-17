@@ -69,7 +69,7 @@ class SoundActivity : AppCompatActivity() {
 
         // Iniciar música automáticamente y la actualización de la UI
         mediaPlayer.start()
-        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        btnPlayPause.setImageResource(R.drawable.play_btn)
         actualizarSeekBarProgreso()
 
         // Botones
@@ -145,14 +145,14 @@ class SoundActivity : AppCompatActivity() {
         }
         crearMediaPlayer()
         mediaPlayer.start()
-        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        btnPlayPause.setImageResource(R.drawable.play_btn)
         actualizarSeekBarProgreso()
     }
     private fun siguienteCancion() {
         indiceActual=(indiceActual+1)%playlist.size
         crearMediaPlayer()
         mediaPlayer.start()
-        btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+        btnPlayPause.setImageResource(R.drawable.play_btn)
         actualizarSeekBarProgreso()
     }
 
@@ -160,11 +160,11 @@ class SoundActivity : AppCompatActivity() {
         if (mediaPlayer.isPlaying) {
             mediaPlayer.pause()
             handler.removeCallbacksAndMessages(null) // Detener el actualizador
-            btnPlayPause.setImageResource(R.drawable.play_btn)
+            btnPlayPause.setImageResource(R.drawable.pause_btn_b)
         } else {
             mediaPlayer.start()
             actualizarSeekBarProgreso() // Reiniciar el actualizador
-            btnPlayPause.setImageResource(R.drawable.pause_btn_b)
+            btnPlayPause.setImageResource(R.drawable.play_btn)
         }
     }
 

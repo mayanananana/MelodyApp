@@ -5,6 +5,7 @@
     <string name="action_sound">Reproductor</string>
     <string name="action_video_1">Video - 1</string>
     <string name="action_video_2">Video - 2</string>
+    <string name="action_sound_2">Reproductor - 2</string>
     <string name="action_start_capture">Empezar a Grabar</string>
     <string name="action_stop_capture">Dejar de Grabar</string>
     <string name="action_play_video">Reproducir</string>

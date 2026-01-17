@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MelodyApp">
         <activity
+            android:name=".SoundActivityv2"
+            android:exported="false" />
+        <activity
             android:name=".VideoActivityv2"
             android:exported="false" />
         <activity
