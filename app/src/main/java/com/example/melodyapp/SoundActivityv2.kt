@@ -39,6 +39,15 @@ class SoundActivityv2 : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sound_activityv2)
 
+        val toolbar: androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowTitleEnabled(false) // Optionally hide title if you want to display your own.
+
+        toolbar.setNavigationOnClickListener {
+            finish()
+        }
+
         btnAtras = findViewById(R.id.btnBack)
         btnSiguiente = findViewById(R.id.btnNext)
         nombre = findViewById(R.id.txtSongTitle)

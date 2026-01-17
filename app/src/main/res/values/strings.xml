@@ -15,4 +15,6 @@
     <string name="stop_capture">Dejar de Grabar</string>
     <string name="play_video">Reproducir</string>
     <string name="Video">video2</string>
+    <string name="name">Nombre de la canción</string>
+    <string name="start_record">💙Dale click a la cámara y empieza a grabar💙</string>
 </resources>
